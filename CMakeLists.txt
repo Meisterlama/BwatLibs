@@ -84,16 +84,21 @@ add_subdirectory(openal-soft)
 set(PHYSX_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/PhysX/physx)
 set(PHYSX_INCLUDE_DIR ${PHYSX_ROOT_DIR}/include/ ${PHYSX_ROOT_DIR}/../pxshared/include/)
 set(PHYSX_LIBRARIES
-#        PhysXExtensions
+        PhysXExtensions
         PhysX
-#        PhysXPvdSDK
-#        PhysXVehicle
-#        PhysXCharacterKinematic
-#        PhysXCooking
-#        PhysXCommon
-#        PhysXFoundation
+        PhysXPvdSDK
+        PhysXVehicle
+        PhysXCharacterKinematic
+        PhysXCooking
+        PhysXCommon
+        PhysXFoundation
         )
-set(TARGET_BUILD_PLATFORM "linux")
+if (LINUX)
+    set(CMAKE_LIBRARY_ARCHITECTURE x86_64-linux-gnu)
+    set(TARGET_BUILD_PLATFORM "linux")
+elseif (WIN32)
+    set(TARGET_BUILD_PLATFORM "windows")
+endif ()
 set(PX_BUILDSNIPPETS OFF CACHE BOOL "Generate the snippets")
 set(PX_BUILDPUBLICSAMPLES OFF CACHE BOOL "Generate the samples projects")
 set(PX_GENERATE_STATIC_LIBRARIES ON CACHE BOOL "Generate static libraries")
@@ -106,8 +111,6 @@ set(CMAKEMODULES_VERSION "1.27")
 set(CMAKEMODULES_PATH ${PHYSX_ROOT_DIR}/../externals/cmakemodules)
 set(PX_OUTPUT_LIB_DIR ${CMAKE_CURRENT_BINARY_DIR}/externals/physx)
 set(PX_OUTPUT_BIN_DIR ${CMAKE_CURRENT_BINARY_DIR}/externals/physx)
-
-message(STATUS "TAMERELABUILD ${CMAKE_LIBRARY_ARCHITECTURE} SLT")
 
 add_subdirectory(${PHYSX_ROOT_DIR}/compiler/public externals/physx)
 include_directories(PUBLIC ${PHYSX_ROOT_DIR}/include)
