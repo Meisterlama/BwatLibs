@@ -98,6 +98,9 @@ if (LINUX)
     set(TARGET_BUILD_PLATFORM "linux")
 elseif (WIN32)
     set(TARGET_BUILD_PLATFORM "windows")
+else()
+    set(CMAKE_LIBRARY_ARCHITECTURE x86_64-linux-gnu)
+    set(TARGET_BUILD_PLATFORM "linux")
 endif ()
 set(PX_BUILDSNIPPETS OFF CACHE BOOL "Generate the snippets")
 set(PX_BUILDPUBLICSAMPLES OFF CACHE BOOL "Generate the samples projects")
@@ -123,3 +126,13 @@ set(STB_SRC
 
 add_library(stb STATIC ${STB_SRC})
 target_include_directories(stb PUBLIC stb/include)
+
+# JSON BUILD
+set(JSON_SRC
+		json/include/json.hpp)
+
+add_library(json INTERFACE)
+target_include_directories(json INTERFACE json/include)
+
+add_library(dirent INTERFACE)
+target_include_directories(dirent INTERFACE dirent/include)
