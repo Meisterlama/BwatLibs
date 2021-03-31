@@ -132,5 +132,10 @@ set(JSON_SRC
 add_library(json INTERFACE)
 target_include_directories(json INTERFACE json/include)
 
+
+# DIRENT BUILD
 add_library(dirent INTERFACE)
 target_include_directories(dirent INTERFACE dirent/include)
+
+add_library(AudioFile INTERFACE)
+target_include_directories(AudioFile INTERFACE AudioFile/include)
