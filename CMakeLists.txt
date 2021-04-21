@@ -54,14 +54,8 @@ if (BWAT_ENGINE_TEST_ENABLED)
 endif()
 
 # IMGUI BUILD
-set(IMGUI_SRC
-        imgui/src/imgui.cpp
-        imgui/src/imgui_demo.cpp
-        imgui/src/imgui_draw.cpp
-        imgui/src/imgui_impl_glfw.cpp
-        imgui/src/imgui_impl_opengl3.cpp
-        imgui/src/imgui_tables.cpp
-        imgui/src/imgui_widgets.cpp)
+file(GLOB_RECURSE IMGUI_SRC
+        imgui/src/*.cpp)
 
 add_library(imgui STATIC ${IMGUI_SRC})
 target_include_directories(imgui PUBLIC imgui/include)
