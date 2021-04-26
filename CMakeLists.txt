@@ -136,3 +136,5 @@ target_include_directories(AudioFile INTERFACE AudioFile/include)
 
 # LUA BUILD
 add_subdirectory(lua)
+add_subdirectory(sol2)
+#target_include_directories(sol2 INTERFACE sol2/include)
