@@ -133,3 +133,6 @@ target_include_directories(dirent INTERFACE dirent/include)
 
 add_library(AudioFile INTERFACE)
 target_include_directories(AudioFile INTERFACE AudioFile/include)
+
+# LUA BUILD
+add_subdirectory(lua)
