@@ -109,6 +109,7 @@ set(PX_OUTPUT_BIN_DIR ${CMAKE_CURRENT_BINARY_DIR}/externals/physx)
 
 add_subdirectory(${PHYSX_ROOT_DIR}/compiler/public externals/physx)
 include_directories(PUBLIC ${PHYSX_ROOT_DIR}/include)
+include_directories(PUBLIC PhysX/physx/include PhysX/pxshared/include/)
 
 # STB BUILD
 set(STB_SRC
